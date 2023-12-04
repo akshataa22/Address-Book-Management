@@ -8,29 +8,21 @@ public class AddressBookMain {
 
         AddressBook addressBook = new AddressBook();
 
-        // Adding a new contact using console input
+        Contact contact = new Contact("Akshata", "Dhanawade", "Link Road", "Mumbai", "Maharashtra", "400064", "1234-5678", "dhanawadeakshata53@gmail.com");
+        addressBook.addContact(contact);
+
+        System.out.println("Contact Details from Address Book:");
+        addressBook.displayContacts();
+
+        // Editing an existing contact's firstName using console input
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter details for a new contact:");
-        System.out.print("First Name: ");
-        String firstName = scanner.nextLine();
-        System.out.print("Last Name: ");
-        String lastName = scanner.nextLine();
-        System.out.print("Address: ");
-        String address = scanner.nextLine();
-        System.out.print("City: ");
-        String city = scanner.nextLine();
-        System.out.print("State: ");
-        String state = scanner.nextLine();
-        System.out.print("ZIP: ");
-        String zip = scanner.nextLine();
-        System.out.print("Phone Number: ");
-        String phoneNumber = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
+        System.out.println("Enter the First Name of the contact you want to edit:");
+        String oldFirstName = scanner.nextLine();
 
-        Contact newContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-        addressBook.addContact(newContact);
+        // Editing the contact's firstName
+        addressBook.editContact(oldFirstName);
 
+        // Displaying the updated contacts
         System.out.println("Updated Contact Details from Address Book:");
         addressBook.displayContacts();
 

@@ -1,6 +1,7 @@
 package Day11;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AddressBook {
     private ArrayList<Contact> contacts;
@@ -27,4 +28,22 @@ public class AddressBook {
         }
     }
 
+    public void editContact(String oldFirstName) {
+        for (Contact contact : contacts) {
+            if (contact.firstName.equals(oldFirstName)) {
+                // Prompt the user to enter new details
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Enter new details for the contact:");
+                System.out.print("New First Name: ");
+                String newFirstName = scanner.nextLine();
+
+                contact.firstName = newFirstName;
+                System.out.println("Contact name changed to " + contact.firstName);
+
+                System.out.println("Contact details updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Contact not found.");
+    }
 }

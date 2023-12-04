@@ -20,5 +20,4 @@ class Contact {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-    
 }
