@@ -11,55 +11,71 @@ public class AddressBookMain {
         Contact contact = new Contact("Akshata", "Dhanawade", "Link Road", "Mumbai", "Maharashtra", "400064", "1234-5678", "dhanawadeakshata53@gmail.com");
         addressBook.addContact(contact);
 
-        System.out.println("Contact Details from Address Book:");
-        addressBook.displayContacts();
+        Scanner sc = new Scanner(System.in);
+        String choice;
+        do {
+            System.out.println("1. Add a new contact");
+            System.out.println("2. Display all contacts");
+            System.out.println("3. Edit Name");
+            System.out.println("4. Delete Contact");
+            System.out.println("5. Exit");
 
-        // Adding a new contact using console input
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter details for a new contact:");
-        System.out.print("First Name: ");
-        String newFirstName = scanner.nextLine();
-        System.out.print("Last Name: ");
-        String newLastName = scanner.nextLine();
-        System.out.print("Address: ");
-        String newAddress = scanner.nextLine();
-        System.out.print("City: ");
-        String newCity = scanner.nextLine();
-        System.out.print("State: ");
-        String newState = scanner.nextLine();
-        System.out.print("ZIP: ");
-        String newZip = scanner.nextLine();
-        System.out.print("Phone Number: ");
-        String newPhoneNumber = scanner.nextLine();
-        System.out.print("Email: ");
-        String newEmail = scanner.nextLine();
+            System.out.print("Enter your choice: ");
+            choice = sc.nextLine();
 
-        // Creating a new contact with user input
-        Contact newContact = new Contact(newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
+            switch (choice) {
+                case "1":
+                    System.out.println("Enter details for a new contact:");
+                    System.out.print("First Name: ");
+                    String newFirstName = sc.nextLine();
+                    System.out.print("Last Name: ");
+                    String newLastName = sc.nextLine();
+                    System.out.print("Address: ");
+                    String newAddress = sc.nextLine();
+                    System.out.print("City: ");
+                    String newCity = sc.nextLine();
+                    System.out.print("State: ");
+                    String newState = sc.nextLine();
+                    System.out.print("ZIP: ");
+                    String newZip = sc.nextLine();
+                    System.out.print("Phone Number: ");
+                    String newPhoneNumber = sc.nextLine();
+                    System.out.print("Email: ");
+                    String newEmail = sc.nextLine();
+                    Contact newContact = new Contact(newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
+                    addressBook.addContact(newContact);
+                    System.out.println("Contact added successfully!");
+                    break;
+                case "2":
+                    System.out.println("Contact Details:");
+                    addressBook.displayContacts();
+                    break;
+                case "3":
+                    System.out.println("Enter the First Name of the contact you want to edit:");
+                    String editFirstName = sc.nextLine();
 
-        // Adding the new contact to the address book
-        addressBook.addContact(newContact);
+                    addressBook.editContact(editFirstName);
+                    addressBook.displayContacts();
+                    break;
+                case "4":
+                    System.out.println("Enter the First Name of the contact you want to delete:");
+                    String deleteFirstName = sc.nextLine();
 
-        // Displaying the updated contacts
-        System.out.println("Updated Contact Details from Address Book:");
-        addressBook.displayContacts();
+                    addressBook.deleteContact(deleteFirstName);
+                    break;
+                case "5":
+                    System.out.println("Exiting...");
+                    break;
 
-        // Editing an existing contact's firstName using console input
-        System.out.println("Enter the First Name of the contact you want to edit:");
-        String editFirstName = scanner.nextLine();
+                default:
+                    System.out.println("Invalid choice! Please try again...");
+                    break;
+            }
+            System.out.println();
+        } while (!choice.equals("5"));
 
-        // Editing the contact's firstName
-        addressBook.editContact(editFirstName);
+        sc.close();
 
-        // Deleting an existing contact using console input
-        System.out.println("Enter the First Name of the contact you want to delete:");
-        String deleteFirstName = scanner.nextLine();
-
-        // Deleting the contact
-        addressBook.deleteContact(deleteFirstName);
-
-        // Displaying the final contacts
-        System.out.println("Final Contact Details from Address Book:");
         addressBook.displayContacts();
     }
 }
