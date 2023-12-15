@@ -57,4 +57,8 @@ public class AddressBook {
         }
         System.out.println("Contact not found.");
     }
+
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
 }
