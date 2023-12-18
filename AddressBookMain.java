@@ -31,7 +31,7 @@ public class AddressBookMain {
                     if (!addressBooks.containsKey(newAddressBookName)) {
                         AddressBook newAddressBook = new AddressBook();
                         addressBooks.put(newAddressBookName, newAddressBook);
-                        System.out.println("Address Book '" + newAddressBookName + "' created successfully!");
+                        System.out.println("Address Book with the name '" + newAddressBookName + "' created successfully!");
                     } else {
                         System.out.println("Address Book with this name already exists. Please choose a different name.");
                     }
@@ -120,7 +120,6 @@ public class AddressBookMain {
                     String newEmail = sc.nextLine();
                     Contact newContact = new Contact(newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
                     addressBook.addContact(newContact);
-                    System.out.println("Contact added successfully!");
                     break;
                 case "2":
                     System.out.println("Contact Details:");

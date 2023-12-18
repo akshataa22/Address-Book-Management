@@ -11,7 +11,13 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact) {
-        contacts.add(contact);
+        boolean isDuplicate = contacts.stream().anyMatch(c -> c.equals(contact));
+        if (!isDuplicate) {
+            contacts.add(contact);
+            System.out.println("Contact added successfully!");
+        } else {
+            System.out.println("Duplicate entry. Cannot add the contact.");
+        }
     }
 
     public void displayContacts() {

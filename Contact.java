@@ -1,5 +1,7 @@
 package Day11;
 
+import java.util.Objects;
+
 class Contact {
     public String firstName;
     public String lastName;
@@ -19,5 +21,19 @@ class Contact {
         this.zip = zip;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Contact contact = (Contact) obj;
+        return firstName.equals(contact.firstName) && lastName.equals(contact.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName);
     }
 }
