@@ -4,20 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
+    private String addressBookName;
     private ArrayList<Contact> contacts;
 
     public AddressBook() {
+        this.addressBookName = addressBookName;
         this.contacts = new ArrayList<>();
     }
 
     public void addContact(Contact contact) {
-        boolean isDuplicate = contacts.stream().anyMatch(c -> c.equals(contact));
-        if (!isDuplicate) {
-            contacts.add(contact);
-            System.out.println("Contact added successfully!");
-        } else {
-            System.out.println("Duplicate entry. Cannot add the contact.");
-        }
+        contacts.add(contact);
+        System.out.println("Contact added successfully!");
     }
 
     public void displayContacts() {

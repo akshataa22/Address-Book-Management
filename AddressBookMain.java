@@ -63,7 +63,7 @@ public class AddressBookMain {
                     break;
 
                 default:
-                    System.out.println("Invalid choice! Please try again...");
+                    System.out.println("Invalid choice! Please try again..");
                     break;
             }
             System.out.println();
