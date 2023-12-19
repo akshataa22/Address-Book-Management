@@ -1,6 +1,7 @@
 package Day11;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -17,7 +18,7 @@ public class AddressBookMain {
             System.out.println("1. Add a new Address Book");
             System.out.println("2. Create new Contact");
             System.out.println("3. Select Address Book");
-            System.out.println("3. Exit");
+            System.out.println("4. Exit");
 
             System.out.print("Enter your choice: ");
             choice = sc.nextLine();
@@ -79,7 +80,10 @@ public class AddressBookMain {
             System.out.println("3. Edit Name");
             System.out.println("4. Delete Contact");
             System.out.println("5. Sort the entries alphabetically");
-            System.out.println("6. Exit");
+            System.out.println("6. Sort the entries by city");
+            System.out.println("7. Sort the entries by state");
+            System.out.println("8 Sort the entries by zip");
+            System.out.println("9. Exit");
 
             System.out.print("Enter your choice: ");
             choice = sc.nextLine();
@@ -128,16 +132,32 @@ public class AddressBookMain {
                     System.out.println("Contacts sorted by name:");
                     addressBook.displayContacts();
                     break;
+
                 case "6":
-                    System.out.println("Exiting...");
+                    List<Contact> contactsSortedByCity = addressBook.sortContactsByCity();
+                    System.out.println("Contacts sorted by City:");
+                    addressBook.displayContacts(contactsSortedByCity);
                     break;
 
+                case "7":
+                    List<Contact> contactsSortedByState = addressBook.sortContactsByState();
+                    System.out.println("Contacts sorted by State:");
+                    addressBook.displayContacts(contactsSortedByState);
+                    break;
+                case "8":
+                    List<Contact> contactsSortedByZip = addressBook.sortContactsByZip();
+                    System.out.println("Contacts sorted by Zip:");
+                    addressBook.displayContacts(contactsSortedByZip);
+                    break;
+                case "9":
+                    System.out.println("Exiting...");
+                    break;
                 default:
                     System.out.println("Invalid choice! Please try again...");
                     break;
             }
             System.out.println();
-        } while (!choice.equals("6"));
+        } while (!choice.equals("9"));
 
         addressBook.displayContacts();
     }

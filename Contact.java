@@ -38,4 +38,17 @@ class Contact {
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
 }
