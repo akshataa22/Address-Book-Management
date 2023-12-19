@@ -34,14 +34,13 @@ public class AddressBook {
         }
     }
 
-    public void editContact(String oldFirstName) {
+    public void editContact(String inputFirstName) {
         for (Contact contact : contacts) {
-            if (contact.firstName.equals(oldFirstName)) {
-                // Prompt the user to enter new details
-                Scanner scanner = new Scanner(System.in);
+            if (contact.firstName.equals(inputFirstName)) {
+                Scanner sc = new Scanner(System.in);
                 System.out.println("Enter new details for the contact:");
                 System.out.print("New First Name: ");
-                String newFirstName = scanner.nextLine();
+                String newFirstName = sc.nextLine();
 
                 contact.firstName = newFirstName;
                 System.out.println("Contact name changed to " + contact.firstName);

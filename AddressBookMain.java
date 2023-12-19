@@ -8,7 +8,6 @@ public class AddressBookMain {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Management program.");
 
-        AddressBook addressBook = new AddressBook();
         Map<String, AddressBook> addressBooks = new HashMap<>();       // Dictionary to store Address Book Name to Address Book
 
         Scanner sc = new Scanner(System.in);
@@ -37,29 +36,14 @@ public class AddressBookMain {
                     }
                     break;
                 case "2":
-                    System.out.println("Enter details for a new contact:");
-                    System.out.print("First Name: ");
-                    String newFirstName = sc.nextLine();
-                    System.out.print("Last Name: ");
-                    String newLastName = sc.nextLine();
-                    System.out.print("Address: ");
-                    String newAddress = sc.nextLine();
-                    System.out.print("City: ");
-                    String newCity = sc.nextLine();
-                    System.out.print("State: ");
-                    String newState = sc.nextLine();
-                    System.out.print("ZIP: ");
-                    String newZip = sc.nextLine();
-                    System.out.print("Phone Number: ");
-                    String newPhoneNumber = sc.nextLine();
-                    System.out.print("Email: ");
-                    String newEmail = sc.nextLine();
-                    Contact newContact = new Contact(newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
-                    addressBook.addContact(newContact);
                     System.out.println("Enter address book name: ");
-                    String name = sc.nextLine();
-                    addressBooks.put(name,addressBook);
-                    System.out.println("Contact added successfully!");
+                    String addressBookName = sc.nextLine();
+                    if (addressBooks.containsKey(addressBookName)) {
+                        AddressBook selectedAddressBookName = addressBooks.get(addressBookName);
+                        operateOnAddressBook(selectedAddressBookName, sc);
+                    } else {
+                        System.out.println("Address Book not found. Please create it first.");
+                    }
                     break;
                 case "3":
                     System.out.print("Enter the name of the Address Book: ");
@@ -75,7 +59,7 @@ public class AddressBookMain {
                     break;
 
                 case "4":
-                    System.out.println("Exiting...");
+                    System.out.println("Exiting..");
                     break;
 
                 default:
@@ -120,13 +104,14 @@ public class AddressBookMain {
                     String newEmail = sc.nextLine();
                     Contact newContact = new Contact(newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
                     addressBook.addContact(newContact);
+                    System.out.println("Contact added successfully!");
                     break;
                 case "2":
                     System.out.println("Contact Details:");
                     addressBook.displayContacts();
                     break;
                 case "3":
-                    System.out.println("Enter the First Name of the contact you want to edit:");
+                    System.out.println("Enter the first Name of the contact you want to edit:");
                     String editFirstName = sc.nextLine();
 
                     addressBook.editContact(editFirstName);

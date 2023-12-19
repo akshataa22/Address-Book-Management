@@ -31,9 +31,4 @@ class Contact {
         Contact contact = (Contact) obj;
         return firstName.equals(contact.firstName) && lastName.equals(contact.lastName);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName);
-    }
 }
