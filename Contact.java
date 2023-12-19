@@ -22,4 +22,20 @@ class Contact {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + getFullName() +
+                "\nAddress: " + address +
+                "\nCity: " + city +
+                "\nState: " + state +
+                "\nZIP: " + zip +
+                "\nPhone Number: " + phoneNumber +
+                "\nEmail: " + email +
+                "\n-----------------------";
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

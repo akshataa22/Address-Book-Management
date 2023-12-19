@@ -78,7 +78,8 @@ public class AddressBookMain {
             System.out.println("2. Display all contacts");
             System.out.println("3. Edit Name");
             System.out.println("4. Delete Contact");
-            System.out.println("5. Exit");
+            System.out.println("5. Sort the entries alphabetically");
+            System.out.println("6. Exit");
 
             System.out.print("Enter your choice: ");
             choice = sc.nextLine();
@@ -123,6 +124,11 @@ public class AddressBookMain {
                     addressBook.deleteContact(deleteFirstName);
                     break;
                 case "5":
+                    addressBook.sortContactsByName();
+                    System.out.println("Contacts sorted by name:");
+                    addressBook.displayContacts();
+                    break;
+                case "6":
                     System.out.println("Exiting...");
                     break;
 
@@ -131,7 +137,7 @@ public class AddressBookMain {
                     break;
             }
             System.out.println();
-        } while (!choice.equals("5"));
+        } while (!choice.equals("6"));
 
         addressBook.displayContacts();
     }

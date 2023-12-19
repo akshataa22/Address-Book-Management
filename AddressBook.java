@@ -1,14 +1,15 @@
 package Day11;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
-    private String addressBookName;
     private ArrayList<Contact> contacts;
 
     public AddressBook() {
-        this.addressBookName = addressBookName;
         this.contacts = new ArrayList<>();
     }
 
@@ -58,6 +59,15 @@ public class AddressBook {
             }
         }
         System.out.println("Contact not found.");
+    }
+
+    public void sortContactsByName() {
+        List<Contact> sortedContacts = contacts.stream()
+                .sorted(Comparator.comparing(Contact::getFullName))
+                .collect(Collectors.toList());
+
+        contacts.clear();
+        contacts.addAll(sortedContacts);
     }
 
     public ArrayList<Contact> getContacts() {
