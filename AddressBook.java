@@ -1,5 +1,6 @@
 package Day11;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
-public class AddressBook {
+public class AddressBook implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private ArrayList<Contact> contacts;
 
     public AddressBook() {
@@ -97,6 +100,26 @@ public class AddressBook {
         }
     }
 
+    public void writeToFile(String fileName) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            outputStream.writeObject(contacts);
+            System.out.println("Address book written to file successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error writing to file.");
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public void readFromFile(String fileName) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+            contacts = (ArrayList<Contact>) inputStream.readObject();
+            System.out.println("Address book read from file successfully.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Error reading from file.");
+        }
+    }
 
     public ArrayList<Contact> getContacts() {
         return contacts;

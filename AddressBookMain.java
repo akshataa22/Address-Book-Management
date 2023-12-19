@@ -150,6 +150,16 @@ public class AddressBookMain {
                     addressBook.displayContacts(contactsSortedByZip);
                     break;
                 case "9":
+                    System.out.print("Enter the file name to write address book data: ");
+                    String writeFileName = sc.nextLine();
+                    addressBook.writeToFile(writeFileName);
+                    break;
+                case "10":
+                    System.out.print("Enter the file name to read address book data: ");
+                    String readFileName = sc.nextLine();
+                    addressBook.readFromFile(readFileName);
+                    break;
+                case "11":
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -157,7 +167,7 @@ public class AddressBookMain {
                     break;
             }
             System.out.println();
-        } while (!choice.equals("9"));
+        } while (!choice.equals("11"));
 
         addressBook.displayContacts();
     }

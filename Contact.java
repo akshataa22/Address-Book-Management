@@ -1,8 +1,9 @@
 package Day11;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-class Contact {
+class Contact implements Serializable {
     public String firstName;
     public String lastName;
     public String address;
