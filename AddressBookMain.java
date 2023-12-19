@@ -104,7 +104,6 @@ public class AddressBookMain {
                     String newEmail = sc.nextLine();
                     Contact newContact = new Contact(newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail);
                     addressBook.addContact(newContact);
-                    System.out.println("Contact added successfully!");
                     break;
                 case "2":
                     System.out.println("Contact Details:");
